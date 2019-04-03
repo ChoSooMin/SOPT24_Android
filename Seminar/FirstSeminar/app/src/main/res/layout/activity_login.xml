@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".LoginActivity">
+
+
+    <ImageView
+        android:id="@+id/sopt_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:src="@drawable/sopt_logo"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"/>
+
+    <EditText
+        android:id="@+id/edt_login_id"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="id"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/gray_border"/>
+
+    <EditText
+        android:id="@+id/edt_login_pw"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="pw"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/gray_border"/>
+
+    <Button
+        android:id="@+id/btn_login_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="로그인"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginVertical="30dp"
+        android:background="@drawable/primary_border_fill"/>
+
+
+</LinearLayout>
