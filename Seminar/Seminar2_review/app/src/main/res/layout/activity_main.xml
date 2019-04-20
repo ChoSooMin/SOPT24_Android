@@ -8,6 +8,18 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:background="@color/white">
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- include를 사용하면 미리 정의한 외부 layout을 불러올 수 있음 -->
+
+        <include
+            android:id="@+id/toolbar_main"
+            layout="@layout/toolbar_main"/>
+
+    </LinearLayout>
 
     <Button
         android:text="로그인"

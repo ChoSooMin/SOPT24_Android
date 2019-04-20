@@ -55,16 +55,19 @@ class LoginActivity : AppCompatActivity() {
                 edtLoginPW.requestFocus()
             }
             else { // 다 입력이 되었다면 postSignupResponse
-                postLoginResponse(login_id)
+                postLoginResponse(login_id, login_pw)
             }
         }
     }
 
     // 로그인 버튼 누르면 실행
-    fun postLoginResponse(login_id : String) {
+    fun postLoginResponse(login_id : String, login_pw : String) {
         val intent = Intent()
         intent.putExtra("login_id", login_id) // 부모 Activity에 전달할 데이터
         setResult(Activity.RESULT_OK, intent) // 부모 Activity에 intent 전달
+
+        // SharedPreferences에 저장
+        SharedPreferenceController.setUserID(this, login_id)
 
         finish()
     }
