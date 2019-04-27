@@ -37,7 +37,8 @@ class MainActivity : AppCompatActivity() {
 
         // toolbar 설정
         configureTitleBar()
-        txt_toolbar_main_action.setOnClickListener {
+        // 툴바 로그인 로그아웃 이미지 바꾸기
+        img_toolbar_main_action.setOnClickListener {
             // 자동로그인이 되어있지 않은 상태라면
             if (SharedPreferenceController.getUserID(this) == "" ) {
                 startActivity<LoginActivity>() // toolbar의 로그인 버튼을 눌렀을 때, 로그인 액티비티로 이동하도록
@@ -72,10 +73,10 @@ class MainActivity : AppCompatActivity() {
     // Toolbar의 로그인/로그아웃 버튼 텍스트 설정
     private fun configureTitleBar() {
         if (SharedPreferenceController.getUserID(this) == "") {
-            txt_toolbar_main_action.text = "로그인"
+            img_toolbar_main_action.isSelected = false
         }
         else {
-            txt_toolbar_main_action.text = "로그아"
+            img_toolbar_main_action.isSelected = true
         }
     }
 }
