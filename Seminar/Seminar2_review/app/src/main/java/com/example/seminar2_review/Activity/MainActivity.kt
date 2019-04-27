@@ -1,13 +1,19 @@
-package com.example.seminar2_review
+package com.example.seminar2_review.Activity
 
 import android.app.Activity
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.widget.RelativeLayout
+import com.example.seminar2_review.Adapter.ProductMainPagerAdapter
+import com.example.seminar2_review.Adapter.SliderMainPagerAdapter
+import com.example.seminar2_review.R
+import com.example.seminar2_review.SharedPreferenceController
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar_main.*
 import org.jetbrains.anko.startActivity
-import org.jetbrains.anko.startActivityForResult
 import org.jetbrains.anko.toast
 
 class MainActivity : AppCompatActivity() {
@@ -17,7 +23,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+/*
         btnMainLogin.setOnClickListener {
             // 기본
 //            val intent = Intent(this, LoginActivity::class.java)
@@ -34,9 +40,13 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
 
-
+*/
         // toolbar 설정
         configureTitleBar()
+
+        // mainTab 설정
+        configureMainTab()
+
         // 툴바 로그인 로그아웃 이미지 바꾸기
         img_toolbar_main_action.setOnClickListener {
             // 자동로그인이 되어있지 않은 상태라면
@@ -70,7 +80,7 @@ class MainActivity : AppCompatActivity() {
         configureTitleBar()
     }
 
-    // Toolbar의 로그인/로그아웃 버튼 텍스트 설정
+    // Toolbar의 로그인/로그아웃 버튼 이미지 설정
     private fun configureTitleBar() {
         if (SharedPreferenceController.getUserID(this) == "") {
             img_toolbar_main_action.isSelected = false
@@ -78,5 +88,26 @@ class MainActivity : AppCompatActivity() {
         else {
             img_toolbar_main_action.isSelected = true
         }
+    }
+
+    //
+    private fun configureMainTab() {
+        vp_main_product.adapter = ProductMainPagerAdapter(supportFragmentManager, 3)
+        vp_main_product.offscreenPageLimit = 2
+        tl_main_category.setupWithViewPager(vp_main_product)
+
+        val navCategoryMainLayout: View =
+            (this.getSystemService(android.content.Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater)
+                .inflate(R.layout.navigation_category_main, null, false)
+        tl_main_category.getTabAt(0)!!.customView =
+            navCategoryMainLayout.findViewById(R.id.rl_nav_category_main_all) as RelativeLayout
+        tl_main_category.getTabAt(1)!!.customView =
+            navCategoryMainLayout.findViewById(R.id.rl_nav_category_main_new) as RelativeLayout
+        tl_main_category.getTabAt(2)!!.customView =
+            navCategoryMainLayout.findViewById(R.id.rl_nav_category_main_end) as RelativeLayout
+
+        vp_main_slider.adapter = SliderMainPagerAdapter(supportFragmentManager, 3)
+        vp_main_slider.offscreenPageLimit = 2
+        tl_main_indicator.setupWithViewPager(vp_main_slider)
     }
 }

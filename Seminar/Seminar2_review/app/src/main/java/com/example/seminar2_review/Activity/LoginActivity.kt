@@ -1,12 +1,13 @@
-package com.example.seminar2_review
+package com.example.seminar2_review.Activity
 
 import android.app.Activity
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.example.seminar2_review.R
+import com.example.seminar2_review.SharedPreferenceController
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.activity_signup.*
 import org.jetbrains.anko.startActivityForResult
 import org.jetbrains.anko.toast
 import java.text.SimpleDateFormat
